@@ -4,67 +4,22 @@
 
 using namespace std;
 
-int main(void)
-{
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int n, m;
-    cin >> n >> m;
-
-    int arr[100000] = {-1};
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> arr[i];
+int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    
+    int N, M; cin>>N>>M;
+    vector<int> v;
+    for(int i=0; i<N; i++){
+        int inp; cin>>inp;
+        v.push_back(inp);
     }
-    sort(arr, arr + n);
-
-    for (int i = 0; i < m; i++)
-    {
-        int first, last;
-        cin >> first >> last;
-        int l = 0, r = n - 1;
-        int mid, fIndex, lIndex;
-        while (l <= r)
-        {
-            mid = (r - l) / 2 + l;
-            fIndex = mid;
-            if (arr[mid] == first)
-            {
-                break;
-            }
-            else if (arr[mid] < first)
-            {
-                l = mid + 1;
-                fIndex = mid + 1;
-            }
-            else
-            {
-                r = mid - 1;
-            }
-        }
-        l = 0;
-        r = n - 1;
-        while (l <= r)
-        {
-            mid = (r - l) / 2 + l;
-            lIndex = mid;
-            if (arr[mid] == last)
-            {
-                break;
-            }
-            else if (arr[mid] < last)
-            {
-                l = mid + 1;
-            }
-            else
-            {
-                lIndex = mid - 1;
-                r = mid - 1;
-            }
-        }
-        cout << lIndex - fIndex + 1 << "\n";
+    sort(v.begin(), v.end());
+    for(int i=0; i<M; i++){
+        int a, b; cin>>a>>b;
+        int first = lower_bound(v.begin(), v.end(), a) - v.begin();
+        int second = upper_bound(v.begin(), v.end(), b) - v.begin();
+        cout<<second - first<<'\n';
     }
-    return 0;
+    
 }
