@@ -9,29 +9,18 @@ int main() {
 
     int n;
     cin >> n;
-    priority_queue<int> pq;
+    priority_queue<int, vector<int>, greater<int>> pq;
+
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
             int temp;
             cin >> temp;
             pq.push(temp);
-        }
-        if (pq.size() > n) {
-            priority_queue<int> temp;
-            for (int i = 0; i < n; i++) {
-                temp.push(pq.top());
-                pq.pop();
-            }
-            pq = temp;
+			if (pq.size() > n) {
+			    pq.pop();
+			}
         }
     }
-
-    for (int i = 0; i < n; i++)
-    {
-        if(i == n-1){
-            cout << pq.top();
-        }
-        pq.pop();
-    }
+    cout << pq.top();
     return 0;
 }
