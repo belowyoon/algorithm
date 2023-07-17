@@ -6,24 +6,23 @@
 
 using namespace std;
 int n;
-vector<int> result;
+int result = 0;
+vector<int> strong;
+vector<int> weight;
 
-void breakEgg(vector<int> strong, vector<int> weight, int index) {
+void breakEgg(int index) {
     if (index == n) {
         int cnt = 0;
         for (int i = 0; i < strong.size(); i++) {
-            //cout << strong[i] << " ";
             if (strong[i] <= 0) {
                 cnt++;
             }
         }
-        //cout << "cnt : " << cnt << "\n";
-        result.push_back(cnt);
+        result = max(result, cnt);
         return;
     }
     if (strong[index] <= 0) {
-        //cout << index << " : " << strong[index] << "\n";
-        breakEgg(strong, weight, index+1);
+        breakEgg(index+1);
         return;
     }
     int flag = 0;
@@ -31,7 +30,7 @@ void breakEgg(vector<int> strong, vector<int> weight, int index) {
         if (i != index && strong[i] > 0) {
             strong[i] -= weight[index];
             strong[index] -= weight[i];
-            breakEgg(strong, weight, index+1);
+            breakEgg(index+1);
             strong[i] += weight[index];
             strong[index] += weight[i];
         } else {
@@ -39,8 +38,7 @@ void breakEgg(vector<int> strong, vector<int> weight, int index) {
         }
     }
     if (flag == n) {
-        //cout << index << " : " << strong[index] << "\n";
-        breakEgg(strong, weight, index+1);
+        breakEgg(index+1);
         return;
     }
 }
@@ -53,15 +51,12 @@ int main(void)
     cin >> n;
 
     int s, w;
-    vector<int> weight;
-    vector<int> strong;
     for (int i = 0; i < n; i++) {
         cin >> s >> w;
         strong.push_back(s);
         weight.push_back(w);
     }
-    breakEgg(strong, weight, 0);
-    int m = *max_element(result.begin(), result.end());
-    cout << m;
+    breakEgg(0);
+    cout << result;
     return 0;
 }
