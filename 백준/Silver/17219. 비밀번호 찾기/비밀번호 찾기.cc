@@ -14,8 +14,6 @@ int main() {
 
     int n, m;
     unordered_map<string, string> map;
-    string address[100000];
-    string password[100000];
     cin >> n >> m;
     string buffer;
     getline(cin, buffer);
