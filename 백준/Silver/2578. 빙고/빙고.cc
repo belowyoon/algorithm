@@ -5,41 +5,38 @@ using namespace std;
 
 int bingo[5][5] = {0};
 int line = 0;
+bool diagonal[2];
 unordered_map<int, pair<int, int>> findBingo;
 
 int checkBingo(int x, int y) {
     bingo[x][y] = 0;
     int flag[4] = {0};
     for (int i = 0; i < 5; i++){
-        for (int j = 0; j < 5; j++) {
-            if (i == x) {
-                if (bingo[i][j] == 0) {
-                    flag[0]++;
-                }
-            } else {
-                int num = (y-j) / (x-i);
-                int remainder = (y-j) % (x-i);
-                if (num == 1 && remainder == 0) {
-                    if (bingo[i][j] == 0) {
-                        flag[2]++;
-                    }
-                }
-                if (num == -1 && remainder == 0) {
-                    if(bingo[i][j] == 0) {
-                        flag[3]++;
-                    }
-                }
-            }
-            if (j == y && bingo[i][j] == 0) {
-                flag[1]++;
-            }
+        if (bingo[x][i] == 0) {
+            flag[0]++;
         }
+        if (bingo[i][y] == 0) {
+            flag[1]++;
+        }
+        if (!diagonal[0]) {
+            if (bingo[i][i] == 0) {
+                flag[2]++;
+            } 
+        }
+        if (!diagonal[1]) {
+            if (bingo[i][4-i] == 0) {
+                flag[3]++;
+            }
+        }      
     }
     for (int i = 0; i < 4; i++) {
-        if (i < 2 && flag[i] == 5) {
-            line++;
-        } 
-        if (i >= 2 && flag[i] == 4) {
+        if (flag[i] == 5) {
+            if (i == 2) {
+                diagonal[0] = true;
+            }
+            if (i == 3) {
+                diagonal[1] = true;
+            }
             line++;
         } 
     }
