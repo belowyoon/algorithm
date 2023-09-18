@@ -9,6 +9,8 @@ int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
+	cout << fixed;
+    cout.precision(4);
     //freopen("input.txt", "r", stdin);
 
     string str;
@@ -29,8 +31,6 @@ int main()
     float num;
     for (int i = 0; i < trees.size(); i++) {
         num = round((float(map[trees[i]]) / cnt * 100) * 10000) / 10000;
-        cout << fixed;
-        cout.precision(4);
         cout << trees[i] << " " << num << '\n'; 
     }
     return 0;
