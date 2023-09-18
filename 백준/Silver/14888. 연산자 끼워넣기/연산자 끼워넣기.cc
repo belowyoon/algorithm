@@ -14,8 +14,7 @@ void cal(int k, int oper[], int result) {
         return;
     }
     for (int j = 0; j < 4; j++) {
-        int temp = oper[j];
-        while (oper[j] > 0) {
+        if (oper[j] > 0) {
             oper[j]--;
             switch(j) {
                 case 0:
@@ -31,8 +30,8 @@ void cal(int k, int oper[], int result) {
                     cal(k - 1, oper, result / num[n - k]);
                     break; 
             } 
+            oper[j]++;
         }    
-        oper[j] = temp;      
     }
     return;
 }
