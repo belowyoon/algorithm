@@ -11,13 +11,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.10"]
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
@@ -39,7 +37,7 @@ jobs:
         git commit -m "auto update README.md"
     - name: Push changes
       run: |
-        git push https://github.com/hayoon0524/Algorithm.git HEAD:main
+        git push
       env:
         GH_TOKEN: "${{ secrets.GH_TOKEN }}"
     - name: Debug Token
