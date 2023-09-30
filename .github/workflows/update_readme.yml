@@ -41,4 +41,7 @@ jobs:
       run: |
         git push https://github.com/hayoon0524/Algorithm.git HEAD:main
       env:
-        GH_TOKEN : ${{ secrets.GH_TOKEN }}
+        GH_TOKEN: "${{ secrets.GH_TOKEN }}"
+    - name: Debug Token
+      run: echo "Token: $GH_TOKEN"
+
