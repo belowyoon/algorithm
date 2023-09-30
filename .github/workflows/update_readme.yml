@@ -43,5 +43,6 @@ jobs:
       env:
         GH_TOKEN: "${{ secrets.GH_TOKEN }}"
     - name: Debug Token
-      run: echo "Token: $GH_TOKEN"
+      run: |
+        echo "Token: $GH_TOKEN"
 
