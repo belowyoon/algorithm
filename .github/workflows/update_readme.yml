@@ -33,8 +33,8 @@ jobs:
         python upload.py
     - name: Commit changes
       run: |
-        git config --global user.name 'github nickname'
-        git config --global user.email 'github email'
+        git config --global user.name 'hayoon0524'
+        git config --global user.email 'hayoon0524@konkuk.ac.kr'
         git add -A
         git commit -am "auto update README.md"
     - name: Push changes
