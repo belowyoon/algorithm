@@ -19,6 +19,10 @@ char check(char a, char b) {
 
 string solution(vector<string> survey, vector<int> choices) {
     char a, b;
+    char mbti[4][2] = { {'R','T'},
+                        {'C','F'},
+                        {'J','M'},
+                        {'A','N'} };
     for (int i = 0; i < survey.size(); i++){
         a = survey[i][0];
         b = survey[i][1];
@@ -32,9 +36,8 @@ string solution(vector<string> survey, vector<int> choices) {
         }
     }
     string answer = "";
-    answer.push_back(check('R', 'T'));
-    answer.push_back(check('C', 'F'));
-    answer.push_back(check('J', 'M'));
-    answer.push_back(check('A', 'N'));
+    for (int i = 0; i < 4; i++) {
+        answer.push_back(check(mbti[i][0], mbti[i][1]));
+    }
     return answer;
 }
