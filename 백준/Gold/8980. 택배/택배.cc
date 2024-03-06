@@ -11,9 +11,9 @@ struct Box {
 
 bool compare(Box& a, Box& b){
     if (a.e == b.e) {
-        return a.s > b.s; 
+        return a.s < b.s; 
     }
-    return a.e > b.e;
+    return a.e < b.e;
 }
 
 int main()
