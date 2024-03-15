@@ -2,14 +2,15 @@
 #include <algorithm>
 #include <vector>
 #include <queue>
-#define INF 1000000000
+#define INF 100000000
 using namespace std;
 
 vector<vector<pair<int, int>>> edges;
 int n, e, a, b, c, u, v;
+vector<int> dist;
 
-pair<int, int> calc(int start, int e1, int e2) {
-    vector<int> dist(n+1, INF);
+void calc(int start) {
+    dist.assign(n+1, INF);
     priority_queue<pair<int, int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;
     pq.push({0, start});
     dist[start] = 0;
@@ -29,7 +30,7 @@ pair<int, int> calc(int start, int e1, int e2) {
             }
         }
     }
-    return {dist[e1], dist[e2]};
+    return;
 }
 
 int main()
@@ -46,10 +47,13 @@ int main()
         edges[b].push_back({a,c});
     }
     cin >> u >> v;
-    pair<int, int> r1 = calc(1, u, v);
-    pair<int, int> r2 = calc(u, v, n);
-    pair<int, int> r3 = calc(v, n, 0);
-    long long result = min((long long)r1.first + r3.first, (long long)r1.second + r2.second) + (long long)r2.first;
+    calc(1);
+    int toU = dist[u], toV = dist[v];
+    calc(u);
+    int UtoV = dist[v], UtoN = dist[n];
+    calc(v);
+    int VtoN = dist[n];
+    int result = min(toU + VtoN, toV + UtoN) + UtoV;
     if (result >= INF) cout << -1;
     else cout << result;
     return 0;
