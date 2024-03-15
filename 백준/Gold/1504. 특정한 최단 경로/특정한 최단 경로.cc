@@ -18,7 +18,7 @@ void calc(int start) {
     {
         int cost = pq.top().first;
         int node = pq.top().second;
-;       pq.pop();
+        pq.pop();
         if (cost > dist[node])
             continue;
         for (int i = 0; i < edges[node].size(); i++) {
@@ -47,12 +47,14 @@ int main()
         edges[b].push_back({a,c});
     }
     cin >> u >> v;
+
     calc(1);
     int toU = dist[u], toV = dist[v];
     calc(u);
     int UtoV = dist[v], UtoN = dist[n];
     calc(v);
     int VtoN = dist[n];
+    
     int result = min(toU + VtoN, toV + UtoN) + UtoV;
     if (result >= INF) cout << -1;
     else cout << result;
