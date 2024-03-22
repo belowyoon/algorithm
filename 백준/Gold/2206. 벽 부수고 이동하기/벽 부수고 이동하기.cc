@@ -4,7 +4,7 @@
 using namespace std;
 
 vector<vector<char>> map;
-int visited[1001][1001][2];
+bool visited[1001][1001][2];
 int dx[4] = {1, 0, -1, 0};
 int dy[4] = {0, 1, 0, -1};
 int n, m;
@@ -19,14 +19,16 @@ int cal(){
     queue<Node> q;
     q.push({0, 0, 0});
     visited[0][0][0] = 1;
-
+    int depth = 0;
+    
     while (!q.empty()){
         int size = q.size();
+        depth++;
         for (int i = 0; i < size; i++){
             Node node = q.front();
             q.pop();
 
-            if (node.x == n-1 && node.y == m-1) return visited[node.x][node.y][node.wall];
+            if (node.x == n-1 && node.y == m-1) return depth;
 
             for (int j = 0; j < 4; j++){
                 int nx = node.x + dx[j];
@@ -34,12 +36,12 @@ int cal(){
 
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
                 
-                if (map[nx][ny] == '0' && visited[nx][ny][node.wall] == 0){
-                    visited[nx][ny][node.wall] = visited[node.x][node.y][node.wall] + 1;
+                if (map[nx][ny] == '0' && !visited[nx][ny][node.wall]){
+                    visited[nx][ny][node.wall] = true;
                     q.push({nx, ny, node.wall});
                 } 
                 if (map[nx][ny] == '1' && node.wall == 0) {
-                    visited[nx][ny][1] = visited[node.x][node.y][node.wall] + 1;
+                    visited[nx][ny][1] = true;
                     q.push({nx, ny, 1});
                 }
             }
