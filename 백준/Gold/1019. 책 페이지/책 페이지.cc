@@ -11,14 +11,12 @@ vector<int> dp;
 void fillLast(int x) {
     int frt = 0, bck = 1;
     for (int i = num.size() - 1; i >= 0; i--) {
-        int tmp = num[i];
         if (x != i) {
             if (i > x) {
-                frt = frt * 10 + tmp;
+                frt = frt * 10 + num[i];
             }
             else {
-                tmp = 10;
-                bck *= tmp;
+                bck *= 10;
             }
         }
     }
