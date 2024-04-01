@@ -14,6 +14,7 @@
 | 문제번호 | 링크 |
 | ----- | ----- |
 |1005. ACM Craft|[링크](./%EB%B0%B1%EC%A4%80/Gold/1005.%E2%80%85ACM%E2%80%85Craft/README.md)|
+|1019. 책 페이지|[링크](./%EB%B0%B1%EC%A4%80/Gold/1019.%E2%80%85%EC%B1%85%E2%80%85%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%B1%85%E2%80%85%ED%8E%98%EC%9D%B4%EC%A7%80.cc)|
 |10775. 공항|[링크](./%EB%B0%B1%EC%A4%80/Gold/10775.%E2%80%85%EA%B3%B5%ED%95%AD/README.md)|
 |1083. 소트|[링크](./%EB%B0%B1%EC%A4%80/Gold/1083.%E2%80%85%EC%86%8C%ED%8A%B8/README.md)|
 |10830. 행렬 제곱|[링크](./%EB%B0%B1%EC%A4%80/Gold/10830.%E2%80%85%ED%96%89%EB%A0%AC%E2%80%85%EC%A0%9C%EA%B3%B1/README.md)|
