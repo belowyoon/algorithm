@@ -23,6 +23,7 @@
 ### 🚀 Gold
 | 문제번호 | 링크 |
 | ----- | ----- |
+|10026. 적록색약|[링크](./%EB%B0%B1%EC%A4%80/Gold/10026.%E2%80%85%EC%A0%81%EB%A1%9D%EC%83%89%EC%95%BD/README.md)|
 |1005. ACM Craft|[링크](./%EB%B0%B1%EC%A4%80/Gold/1005.%E2%80%85ACM%E2%80%85Craft/README.md)|
 |1019. 책 페이지|[링크](./%EB%B0%B1%EC%A4%80/Gold/1019.%E2%80%85%EC%B1%85%E2%80%85%ED%8E%98%EC%9D%B4%EC%A7%80/README.md)|
 |10775. 공항|[링크](./%EB%B0%B1%EC%A4%80/Gold/10775.%E2%80%85%EA%B3%B5%ED%95%AD/%EA%B3%B5%ED%95%AD.cc)|
