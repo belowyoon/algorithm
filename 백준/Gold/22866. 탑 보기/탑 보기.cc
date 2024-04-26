@@ -23,9 +23,6 @@ int main() {
 
     for (int i = n-1; i >= 1; i--) {
         if (arr[i+1] > arr[i]) {
-            while (!r.empty() && arr[r.top()] <= arr[i+1]) {
-                r.pop();
-            }
             r.push(i+1);
         } else {
             while (!r.empty() && arr[r.top()] <= arr[i]) {
@@ -41,9 +38,6 @@ int main() {
                 l.pop();
             }
         } else if (arr[i-1] > arr[i]) {
-            while (!l.empty() && arr[l.top()] <= arr[i-1]) {
-                l.pop();
-            }
             l.push(i-1);
         } 
         size[i] += l.size();
