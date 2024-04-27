@@ -4,11 +4,6 @@
 
 using namespace std;
 
-bool compare(pair<int, int> a, pair<int, int> b) {
-    if (a.first == b.first) return a.second > b.second;
-    return a.first < b.first;
-}
-
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
