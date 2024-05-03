@@ -1,47 +1,41 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
 
 using namespace std;
 
-int main(void)
-{
-	int n, c, num, st, router, start, end, mid, ans = 0;
-	cin >> n >> c;
-	vector<int> pos;
-	for (int i = 0; i < n; i++)
-	{
-		cin >> num;
-		pos.push_back(num);
-	}
-	sort(pos.begin(), pos.end());
-	start = 1;                             // 최소 거리
-	end = pos[n - 1] - pos[0];             // 최대 거리
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
 
-	while (start <= end)
-	{
-		router = 1;
-		mid = (start + end) / 2;
-		st = pos[0];
+    int n, m;
+    cin >> n >> m;
+    vector<int> house(n, 0);
 
-		for (int i = 1; i < n; i++)
-		{
-			if (pos[i] - st >= mid)
-			{
-				router++;
-				st = pos[i];
-			}
-		}
+    for (int i = 0; i < n; i++) {
+        cin >> house[i];
+    }
+    sort(house.begin(),house.end());
 
-		if (router >= c)
-		{
-			ans = max(ans, mid);
-			start = mid + 1;
-		}
+    int s = 1, e = house[n-1] - house[0], ans = 0;
+    while(s <= e) {
+        int r = 1;
+        int mid = (s + e) / 2;
+        int x = house[0];
+        for (int i = 1; i < n; i++) {
+            if (house[i] - x >= mid) {
+                r++;
+                x = house[i];
+            }
+        }
+        if (r >= m) {
+            ans = max(ans, mid);
+            s = mid+1;
+        } else {
+            e = mid-1;
+        }
+    }
+    cout << ans;
 
-		else
-			end = mid - 1;
-	}
-	cout << ans;
-	return 0;
+    return 0;
 }
